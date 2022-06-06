@@ -34,13 +34,14 @@ if(isUser18){
   document.body.append(inputPrivateName)
   inputPrivateName.id="inputPrivateNameId";
   inputPrivateName.placeholder="enter 4 private names"
-  inputPrivateName.value=" "
   
   var btnPrivateNames=document.createElement("button");
   btnPrivateNames.innerText="save"
   document.body.append(btnPrivateNames)
   btnPrivateNames.addEventListener("click",()=>{
     arrayNames.push(inputPrivateName.value);
+    inputPrivateName.value=" "
+
 
     var myUl=document.createElement("ul");
     document.body.append(myUl)
@@ -48,12 +49,9 @@ if(isUser18){
     if(arrayNames.length==4){
       for(var i = 0; i < arrayNames.length ; i++){
         myUl.innerHTML+="<li id='li_"+i+"'>"+arrayNames[i] +" "+ inputLastName.value + "</li>";
-      }
-
-      for(var i=0; i < arrayNames.length;i++){
         if(arrayNames[i][0]==inputName.value[0]){
           document.getElementById("li_" + i).style.color="green";
-        }
+      }
       }
       var btnSearch=document.createElement("button");
         document.body.append(btnSearch)
@@ -64,6 +62,9 @@ if(isUser18){
         myIput.type="search";
         var myT=document.createElement("p");
         document.body.append(myT);
+        if(myIput.value==arrayNames.length[i]){
+          return arrayNames[i]
+        }
         }
     }
   }) 
@@ -88,28 +89,6 @@ for(var i = 0; i < result.length;i++){
 
 
 
-//  function getAge() {
-//   var today = new Date();
-
-//   var birthDate = new Date(inputDate);
-
-//   var age = today.getFullYear() - birthDate.getFullYear();
-
-//   var m = today.getMonth() - birthDate.getMonth();
-
-//   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-//       age--;
-//   }
-//   return age;
-// }
-
-// function test(){
-//   if(getAge() > 18) {
-//     alert("You have 18 or more years old!");
-//   } else{
-//     alert("2pac")
-//   }
-// }
 
 
 
