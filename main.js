@@ -10,7 +10,7 @@ my_p.addEventListener("mouseover",()=>{
   my_p.style.color="green"
 });
 var temp=""
-
+ var arrayNames=[]
 var isUser18=false;
 function main(){
   if(nowDate.getFullYear()-getAgeValue()>18){
@@ -23,7 +23,7 @@ function main(){
     my_p.innerText="no entry."
     img1.src="https://c.tenor.com/-0wLd8WRKLQAAAAM/cl03.gif"
   }
-  var arrayNames=[]
+ 
 if(isUser18){ 
   var inputLastName=document.createElement("input");
   document.body.append(inputLastName);
@@ -53,19 +53,6 @@ if(isUser18){
           document.getElementById("li_" + i).style.color="green";
       }
       }
-      var btnSearch=document.createElement("button");
-        document.body.append(btnSearch)
-        btnSearch.innerText="click for search"
-        btnSearch.onclick= ()=>{
-        var myIput=document.createElement("input");
-        document.body.append(myIput)
-        myIput.type="search";
-        var myT=document.createElement("p");
-        document.body.append(myT);
-        if(myIput.value==arrayNames.length[i]){
-          return arrayNames[i]
-        }
-        }
     }
   }) 
   
@@ -92,3 +79,25 @@ for(var i = 0; i < result.length;i++){
 
 
 
+
+
+
+
+function createInput() {
+  var btnSearch=document.createElement("button");
+  document.body.append(btnSearch)
+  btnSearch.innerText="click for search"
+  btnSearch.onclick= ()=>{
+  var myIput=document.createElement("input");
+  document.body.append(myIput)
+  myIput.type="search";
+  myIput.addEventListener("input",createInput)
+  var myT=document.createElement("p");
+  document.body.append(myT);
+  for(var i=0; i < arrayNames.length;i++){
+    if(arrayNames[i].includes(myIput.value)){
+      myT.innerHTML+=arrayNames[i]
+    }
+  }
+}
+}
